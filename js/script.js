@@ -18,10 +18,18 @@ const list = [
   {
     id: 3,
     name: "hans-clemet",
-    position: "øver",
+    position: "pølsemaker",
     image:
       "https://image.freepik.com/free-photo/portrait-oktoberfest-man-wearing-traditional-bavarian-clothes_155003-30003.jpg",
     text: "quaerat voluptatum! Maiores nulla nihil rerum hic, velit deleniti nostrum voluptatibus nemo eveniet dicta, fugiat ipsa dolorem minus eos necessitatibus",
+  },
+  {
+    id: 4,
+    name: "ding dongsen",
+    position: "sammadetvel",
+    image:
+      "https://live.staticflickr.com/5018/5409039924_329c4b4dbe_b.jpg",
+    text: "quaerat voluptatum! beatae? Architecto sint eveniet Maiores nulla nihil rerum hic, velit deleniti nostrum voluptatibus nemo eveniet dicta, fugiat ipsa dolorem minus eos necessitatibus",
   },
 ];
 
@@ -29,14 +37,13 @@ const container = document.querySelector(".container");
 
 let counter = 0;
 
-const id = list[counter].id;
-const personName = list[counter].name;
-const position = list[counter].position;
-const image = list[counter].image;
-const text = list[counter].text;
-
-
 function displayPerson() {
+  const id = list[counter].id;
+  const personName = list[counter].name;
+  const position = list[counter].position;
+  const image = list[counter].image;
+  const text = list[counter].text;
+
   container.innerHTML = `<div class="image-container">
     <img
       src="${image}"
@@ -66,13 +73,22 @@ function displayPerson() {
   const randomBtn = document.querySelector(".random-btn");
 
   nextBtn.addEventListener("click", function () {
-      counter++;
-      displayPerson()
+    counter++;
+    if (counter >= list.length) {
+      counter = 0;
+    }
+    displayPerson();
   });
+  prevBtn.addEventListener("click", function () {
+    counter--;
+    if (counter < 0) {
+      counter = list.length - 1;
+    }
+    displayPerson();
+  });
+  randomBtn.addEventListener("click", function () {
+      counter = Math.floor(Math.random() * list.length)
+      displayPerson();
+  })
 }
-displayPerson()
-
-// function increment() {
-//     counter++;
-    
-// }
+displayPerson();

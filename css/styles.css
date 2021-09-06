@@ -68,7 +68,7 @@ body {
 }
 
 .name-and-position {
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
 }
 
 .name-and-position h2 {
@@ -82,6 +82,7 @@ body {
 
 .text {
     margin-bottom: 1rem;
+    min-height: 5.4rem;
 }
 
 .control-btns button {
